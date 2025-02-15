@@ -7,5 +7,3 @@ Reference:
 [3] Roesch, A., Zölls, S., Stadler, D., Helbig, C., Wuchner, K., Kersten, G., Hawe, A., Jiskoot, W., & Menzen, T. (2022). Particles in biopharmaceutical formulations, part 2: An update on analytical techniques and applications for therapeutic proteins, viruses, vaccines, and cells. Journal of Pharmaceutical Sciences, 111, 933–950. https://doi.org/10.1016/j.xphs.2021.12.011&#8203;:contentReference[oaicite:2]{index=2}
 
 [4] Schmidt-Rohr, K. (2007). Simulation of small-angle scattering curves by numerical Fourier transformation. Journal of Applied Crystallography, 40, 16–25. https://doi.org/10.1107/S002188980604550X&#8203;:contentReference[oaicite:3]{index=3}
-
-[5] 
