@@ -1,9 +1,13 @@
 Reference:
 
-[1] Kiss, L. B., Söderlund, J., Niklasson, G. A., & Granqvist, C. G. (1999). The real origin of lognormal size distributions of nanoparticles in vapor growth processes. NanoStructured Materials, 12, 327-332. Pergamon. [PII: S0965-9773(99)00128-2]. https://www.sciencedirect.com/science/article/abs/pii/S0965977399001282
+[1] A. Roesch, S. Zölls, D. Stadler, C. Helbig, K. Wuchner, G. Kersten, A. Hawe, W. Jiskoot, and T. Menzen, “Particles in biopharmaceutical formulations, Part 2: An update on analytical techniques and applications for therapeutic proteins, viruses, vaccines, and cells,” Journal of Pharmaceutical Sciences, vol. 111, pp. 933–950, 2022.
 
-[2] Röding M, Tomaszewski P, Yu S, Borg M and Rönnols J (2022) Machine learning-accelerated small-angle X-ray scattering analysis of disordered two- and three-phase materials. Front. Mater. 9:956839. (https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2022.956839/full)
+[2] K. Schmidt-Rohr, “Simulation of small-angle scattering curves by numerical Fourier transformation,” Journal of Applied Crystallography, vol. 40, pp. 16–25, 2007.
 
-[3] Roesch, A., Zölls, S., Stadler, D., Helbig, C., Wuchner, K., Kersten, G., Hawe, A., Jiskoot, W., & Menzen, T. (2022). Particles in biopharmaceutical formulations, part 2: An update on analytical techniques and applications for therapeutic proteins, viruses, vaccines, and cells. Journal of Pharmaceutical Sciences, 111, 933–950. (https://pubmed.ncbi.nlm.nih.gov/34919969/)
+[3] M. Röding, P. Tomaszewski, S. Yu, M. Borg, and J. Rönnols, “Machine learning-accelerated small-angle X-ray scattering analysis of disordered two- and three-phase materials,” Frontiers in Materials, vol. 9, p. 956839, 2022.
 
-[4] Schmidt-Rohr, K. (2007). Simulation of small-angle scattering curves by numerical Fourier transformation. Journal of Applied Crystallography, 40, 16–25. [https://doi.org/10.1107/S002188980604550X&#8203;:contentReference[oaicite:3]{index=3}](https://doi.org/10.1107/S002188980604550X)
+[4] SASView, “SasView documentation index: Corfunc technical documentation,” n.d., accessed: Mar. 2, 2025. [Online]. Available: https://www.sasview.org/docs/user/qtgui/Perspectives/Corfunc/corfunctechnical.html
+
+[5] L. Kiss, J. Söderlund, G. Niklasson, and C. Granqvist, “The real origin of lognormal size distributions of nanoparticles in vapor growth processes,” Nanostructured Materials, vol. 12, no. 1–4, pp. 327–332, 1999.
+
+[6] S. Sedlak, L. Bruetzel, and J. Lipfert, “Quantitative evaluation of statistical errors in small-angle X-ray scattering measurements,” Journal of Applied Crystallography, vol. 50, no. 2, pp. 621–630, Mar. 2017.
