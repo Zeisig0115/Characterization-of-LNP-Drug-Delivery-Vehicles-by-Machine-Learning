@@ -1,7 +1,7 @@
 # Characterization-of-LNP-Drug-Delivery-Vehicles-by-Machine-Learning
 For anybody interested in this project please feel free to read the project report.
 
-**Reference:**
+## Reference:
 
 [1] A. Roesch, S. Zölls, D. Stadler, C. Helbig, K. Wuchner, G. Kersten, A. Hawe, W. Jiskoot, and T. Menzen, “Particles in biopharmaceutical formulations, Part 2: An update on analytical techniques and applications for therapeutic proteins, viruses, vaccines, and cells,” Journal of Pharmaceutical Sciences, vol. 111, pp. 933–950, 2022.
 
