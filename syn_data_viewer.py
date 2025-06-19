@@ -77,8 +77,8 @@ def add_noise_to_data(data):
 
 if __name__ == '__main__':
     # 设置 type3 与 type4 的 HDF5 文件路径（请根据实际情况修改）
-    type3_file = "./output/clean3.h5"
-    type4_file = "./output/clean4.h5"
+    type3_file = "./output/clean1.h5"
+    type4_file = "./output/clean2.h5"
 
     # 分别加载 type3 与 type4 的数据
     q3, curves3, names3 = load_saxs_data(type3_file)

@@ -1,37 +1,37 @@
 clear;
 clc;
 
-% 1. 批量读取 ./type_3_model/*.mat 文件
-fileList = dir('./type_3_model/*.mat');
+% 1. Batch read all .mat files from ./type_i_model/
+fileList = dir('./type_4_model/*.mat');
 
-% 2. 准备输出目录及输出 hdf5 文件路径
+% 2. Prepare output directory and HDF5 file path
 outputDir = './output';
 if ~exist(outputDir, 'dir')
     mkdir(outputDir);
 end
-hdf5_filename = fullfile(outputDir, 'raw3.h5');
+hdf5_filename = fullfile(outputDir, 'raw4.h5');
 
-% 若文件已存在，则删除，避免旧数据冲突
+% If the file already exists, delete it to avoid conflict with old data
 if exist(hdf5_filename, 'file')
     delete(hdf5_filename);
 end
 
-% 3. 逐个处理每个 .mat 文件
+% 3. Process each .mat file one by one
 for k = 1:length(fileList)
-    % 获取 .mat 文件完整路径
+    % Get the full path of the .mat file
     filename = fullfile(fileList(k).folder, fileList(k).name);
 
-    % 4. 调用 get_Iq 函数计算 q 和 Iq，这里 ratio 传 6（如有需要可修改）
+    % 4. Call get_Iq function to compute q and Iq (use ratio = 6, modify if needed)
     [q, Iq] = get_Iq(filename, 6);
 
-    % 5. 将 q 和 Iq 拼成两列的数据 (N×2)，方便后续一次性读取
+    % 5. Combine q and Iq into a two-column array (N×2) for easier access
     data_qIq = [q(:), Iq(:)];
 
-    % 6. 取文件名（不含路径和后缀），作为 dataset 名的一部分
+    % 6. Extract filename (without path or extension) for dataset naming
     [~, name, ~] = fileparts(filename);
-    dataset_name = ['/', name, '_qIq'];  % 如 /XX_qIq
+    dataset_name = ['/', name, '_qIq'];  % e.g., /XX_qIq
 
-    % 7. 在 HDF5 文件中创建相应的数据集，并写入
+    % 7. Create dataset in HDF5 file and write the data
     h5create(hdf5_filename, dataset_name, size(data_qIq));
     h5write(hdf5_filename, dataset_name, data_qIq);
 

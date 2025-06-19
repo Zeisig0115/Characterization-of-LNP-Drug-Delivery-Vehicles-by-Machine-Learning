@@ -92,6 +92,43 @@ def generate_heter_data(X0, X1, desired_count=1000):
     return np.array(X_heter_list, dtype=X0.dtype)
 
 
+def add_noise_to_curve(curve):
+    """
+    对单个 I(q) 曲线添加噪声，并归一化散射强度。
+    """
+    # 防止 curve 中存在极小值导致除 0 问题
+    curve_safe = np.maximum(curve, 1e-12)
+
+    # 采样满足对数均匀分布的 α，范围 [10^5, 10^(8.5)]
+    log_alpha = np.random.uniform(np.log(1e2), np.log(10 ** 5.5))
+    alpha = np.exp(log_alpha)
+
+    # 对每个 q 计算 sigma^2: sigma2 = ln(1 + alpha / I(q))
+    sigma2 = np.log(1 + alpha / curve_safe)
+
+    # 为每个 q 生成正态分布变量 epsilon
+    epsilon = np.random.randn(curve.shape[0])
+
+    # 计算噪声系数：N(q) = exp(sqrt(sigma2)*epsilon - sigma2/2)
+    noise_factor = np.exp(np.sqrt(sigma2) * epsilon - sigma2 / 2)
+
+    # 添加噪声
+    curve_noisy = curve * noise_factor
+
+    # 归一化散射强度（这里采用梯形积分，假设 q 轴步长均匀）
+    total_intensity = np.trapz(curve_noisy)
+    return curve_noisy / total_intensity
+
+
+def add_noise_to_data(data):
+    """
+    对数据集中的每个样本（每行）添加噪声。
+    data: numpy 数组，形状 (样本数, 特征维度)
+    """
+    noisy_data = np.array([add_noise_to_curve(data[i]) for i in range(data.shape[0])])
+    return noisy_data
+
+
 def load_hdf5_data_with_expansion(file_type3, file_type4, desired_count=1000):
     """
     - 分别加载 Type3 (class=0) 与 Type4 (class=1) 的所有数据
@@ -115,6 +152,10 @@ def load_hdf5_data_with_expansion(file_type3, file_type4, desired_count=1000):
 
     # 3) 生成 heterogeneous 数据 (label=2)
     X2 = generate_heter_data(X0, X1, desired_count=desired_count)
+
+    X0 = add_noise_to_data(X0)
+    X1 = add_noise_to_data(X1)
+    X2 = add_noise_to_data(X2)
 
     # 4) 合并数据及标签
     y0 = np.zeros(desired_count, dtype=np.int32)
@@ -170,8 +211,8 @@ if __name__ == "__main__":
     torch.manual_seed(42)
 
     # 文件路径（请根据实际情况修改路径）
-    file_type3 = "./output/test3.h5"
-    file_type4 = "./output/test4.h5"
+    file_type3 = "./output/clean3.h5"
+    file_type4 = "./output/clean4.h5"
 
     # 加载数据，每个类别 desired_count 条（总共 3*desired_count 条数据）
     desired_count = 2000
@@ -224,13 +265,13 @@ if __name__ == "__main__":
     # 使用 CNN 模型，注意这里的 input_length 等于特征维度
     model = SimpleCNN(input_length=X.shape[1], num_classes=3).to(device)
     criterion = nn.CrossEntropyLoss()  # 适用于三分类问题
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.0002)
 
     # 记录每个 epoch 的训练损失和验证损失
     train_losses = []
     val_losses = []
 
-    epochs = 20
+    epochs = 80
     for epoch in range(epochs):
         model.train()
         total_train_loss = 0
